@@ -1,724 +1,891 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outlet de Electrodomesticos Jb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JB Outlet - Outlet de Electrodomésticos</title>
 
-
-  <!-- Título SEO -->
-  <title>JB Outlet - Outlet de Electrodomesticos</title>
-
-  <!-- Descripción para SEO -->
-  <meta name="description" content="Jb Outlet ofrece un servicio a domicilio y venta de bienes Electrodomesticos para el hogar. Freidoras, heladeras y lavarropas, secarropas principalmente.">
-
-  <!-- Palabras clave (no siempre tienen mucho peso en SEO, pero pueden ayudar) -->
-  <meta name="keywords" content="Electrodomesticos modernoss de 1eras marcas y otras. JB-outlet">
-
-  <!-- Autor -->
+  <!-- SEO -->
+  <meta name="description" content="JB Outlet ofrece venta y entrega de electrodomésticos para el hogar. Heladeras, lavarropas, freidoras, secarropas y más.">
+  <meta name="keywords" content="Electrodomésticos, Outlet, JB Outlet, heladeras, lavarropas, freidoras, secarropas, televisores">
   <meta name="author" content="JB Outlet">
-
-  <!-- Control de indexación en buscadores -->
   <meta name="robots" content="index, follow">
-
-  <!-- Idioma principal -->
   <meta http-equiv="content-language" content="es">
 
-  <!-- Open Graph para redes sociales (Facebook, LinkedIn, etc.) -->
-  <meta property="og:title" content="JB Outlet - Electrodomesticos para el hogar">
-  <meta property="og:description" content="Venta de productos Electrodomesticos para el hogar a precios bajos y con financiacion.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="JB Outlet - Electrodomésticos para el hogar">
+  <meta property="og:description" content="Productos nuevos y con garantía a precios de outlet.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.tu-dominio.com">
   <meta property="og:image" content="https://www.tu-dominio.com/Assets/og-image.jpg">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="JB Outlet - Outlet Electrodomesticos">
-  <meta name="twitter:description" content="Venta de heladeras, lavarropas, secaropas, Smart tv, cafeteras, microondas y más.">
+  <meta name="twitter:title" content="JB Outlet - Electrodomésticos Outlet">
+  <meta name="twitter:description" content="Heladeras, lavarropas, secarropas, televisores, microondas y más.">
   <meta name="twitter:image" content="https://www.tu-dominio.com/Assets/og-image.jpg">
 
   <!-- Favicon -->
-  <link rel="icon" href="Assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="Assets/img/LOGO JB.jpg" type="image/x-icon">
 
-  <!-- Hoja de estilos -->
-  <link rel="stylesheet" href="Assets/Styles.css">
-  <link rel="icon" href="Assets/Icons/" type="image/png">
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/7e4b4a16f8.js" crossorigin="anonymous"></script>
 
-<style>
-   .btn-Google {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-  background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-  background-size: 300% 300%;
-  animation: gradientShift 8s ease infinite;
-  transition: transform 0.2s ease;
-}
+  <style>
+    /* === RESET === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.btn-Google:hover {
-  transform: scale(1.05);
-}
-
-.google-meet-icon {
-  width: 20px;
-  height: 20px;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-  /* Estilos generales */
     body {
       font-family: Arial, sans-serif;
-      background-color: #202124;
+      background-color: #000000;
       color: #e8eaed;
-      margin: 0;
+      overflow-x: hidden;
+    }
+
+   
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Cuando el aside está visible */
+  body.sidebar-open .navbar {
+    margin-left: 260px; /* mismo ancho que el aside */
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: auto; /* empuja los links al extremo derecho */
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover {
+    color: gold;
+  }
+
+  #theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: gold;
+    margin-left: 1rem;
+  }
+
+  #theme-toggle:hover {
+    transform: rotate(20deg);
+  }
+
+
+    /* === SIDEBAR === */
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      background: #000000;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sidebar:not(.hidden) {
+      transform: translateX(0);
+    }
+
+    .sidebar .logo img {
+      width: 120px;
+      margin: 0 auto 20px;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .sidebar nav ul {
+      list-style: none;
+    }
+
+    .sidebar nav ul li {
+      margin: 12px 0;
+    }
+
+    .sidebar nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+    }
+
+    .sidebar nav ul li a:hover {
+      color: gold;
+    }
+
+    .btn-arrep {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn-arrep a {
+      display: inline-block;
+      background: #00AEEF;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-arrep a:hover {
+      background: #0091d1;
+    }
+    #hoverZone {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px; /* ancho del área sensible */
+  height: 100vh;
+  z-index: 50;
+  background: transparent; /* invisible */
+}
+
+    /* === HEADER LOGO BTN === */
+    .header {
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      color: gold;
+      font-weight: bold;
+      font-size: 1.2em;
+      cursor: pointer;
+      gap: 8px;
+      width: 210px;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+    }
+
+    .arrow.open {
+      transform: rotate(90deg);
+    }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    /*background: linear-gradient(135deg, #000, gold, #000);*/
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h1 span {
+      color: gold;
+    }
+
+    .hero-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-cotizacion {
+      background: gold;
+      border: none;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-cotizacion:hover {
+      background: #ffeb3b;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+      z-index: 0;
+    }
+
+    /* === LOGO ANIMADO === */
+    .Logo {
+      display: block;
+      margin: 2rem auto;
+      width: 13%;
+      border-radius: 100px;
+      animation: spinCoin 4s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    @keyframes spinCoin {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    .Logo:hover {
+      animation-play-state: paused;
+    }
+
+    /* === BOTÓN GOOGLE === */
+    .btn-Google {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      transition: transform 0.2s ease;
+      margin: 10px auto;
+    }
+
+    .btn-Google:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .google-meet-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* === CONTENIDO === */
+    .contenido {
+      margin-left: 0;
+      padding: 40px 20px;
+      text-align: center;
+      
+    }
+
+    .contenido h1 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      background-color: #000;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border-bottom: 1px solid #444;
+      padding-bottom: 20px;
+    }
+
+    .footer-logo img {
+      width: 100px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links h4 {
+      margin-bottom: 10px;
+      color: gold;
+    }
+
+    .footer-links ul {
+      list-style: none;
       padding: 0;
     }
 
-/* NAVBAR - Estilos existentes con mejoras para espaciado */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 1.5rem;
-  background-color: #000000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.navbar .nav-left {
-  display: flex;
-  gap: 1rem; /* Mantiene el gap original entre logo y enlaces */
-  align-items: center;
-}
-
-.navbar .logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: gold;
-}
-
-/* NUEVO: Estilos para .nav-links con gap para espaciado de enlaces */
-.navbar .nav-links {
-  display: flex;
-  gap: 1.5rem; /* Gap más amplio para espaciar los <a> en desktop (ajusta si quieres más/menos) */
-  align-items: center;
-}
-
-.navbar a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.2s;
-  white-space: nowrap; /* Evita que el texto se rompa en líneas */
-}
-
-.navbar a:hover {
-  color:gold;
-}
-
-.navbar .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Botón Dark/Light */
-#theme-toggle {
-  background: transparent;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-#theme-toggle:hover {
-  transform: rotate(20deg);
-}
-
-/* HERO base */
-.hero {
-  position: relative;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #000000, gold, #000000); /* DARK */
-  transition: background 0.8s ease-in-out;
-}
-
-/* Partículas */
-#particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  color: #000000;
-  font-size: 2rem;
-}
-
-.hero-content h1 {
-  font-size: 5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content h1 span {
-  color: #ffd900;
-}
-
-/* HERO en Light Mode */
-body.light .hero {
-  background: linear-gradient(135deg, #74ebd5, #ACB6E5, #dcb0ff);
-  background-size: 300% 300%;
-  animation: gradientShift 12s ease infinite;
-  color: #222;
-}
-
-body.light .hero-content h1 span {
-  color: #6a11cb;
-}
-
-/* Animación degradado */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-.btn-primary{
-    background-color:#0f2027;
-    font-size: .90rem;
-    border-radius: 20px;
-    width: 140%;
-    margin-top: 10px;
-}
-.btn-primary a:link {
-  color: rgb(226, 213, 26); /* color del enlace normal */
-  text-decoration: none; /* opcional, para quitar el subrayado */
-}
-.btn-primary a:hover {
-      color: #ebe825;
+    .footer-links ul li {
+      margin-bottom: 6px;
     }
-   .btn-primary a{
+
+    .footer-links ul li a {
+      color: white;
       text-decoration: none;
-    } 
-.btn-primary a:visited {
-  color: rgb(255, 255, 255); /* color del enlace ya visitado */
-}
-
-
-/* CONTENIDO */
-.container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
-  display: grid;
-  gap: 2rem;
-}
-
-
-
-
-
-/* LIGHT MODE */
-body.light {
-  background-color: #f9f9f9;
-  color: #222;
-}
-
-body.light .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-body.light .navbar a {
-  color: #222;
-}
-
-body.light .card {
-  background-color: #ffffff;
-  color: #333;
-}
-
-body.light .card p {
-  color: #555;
-}
-
-    main.container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px;
-        
+      font-size: 14px;
     }
 
-/* Efecto moneda para el logo */
-.Logo {
-  display: block;
-  margin: 2rem auto;
-  margin-top: -65px;
-  position: relative;
-  width: 13%;
-  border-radius: 100px;
-  transform-style: preserve-3d;
-  animation: spinCoin 6s linear infinite;
-}
+    .footer-links ul li a:hover {
+      color: gold;
+    }
 
-/* Animación tipo moneda */
-@keyframes spinCoin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
-.Logo {
-  perspective: 800px;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-  animation: spinCoin 4s ease-in-out infinite;
-}
-.Logo:hover {
-  animation-play-state: paused;
-}
+    .footer-links form {
+      display: flex;
+      margin-top: 10px;
+    }
 
-/* ====== Sidebar ====== */
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background-color: #000000;
-  color: white;
+    .footer-links input {
+      padding: 8px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+
+    .footer-links button {
+      background-color: rgb(64, 161, 226);
+      border: none;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      color: white;
+      margin: 0 8px;
+      font-size: 18px;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: gold;
+    }
+
+  /* Ajustes: cambia --duration para velocidad (s). */
+  .brand-reel {
+    --duration: 18s;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 8px 0;
+    background: transparent;
+  }
+
+  .brand-reel__track {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    /* duplicamos visualmente (contenido repetido) y movemos -50% */
+    white-space: nowrap;
+    animation: reel-scroll var(--duration) linear infinite;
+    will-change: transform;
+  }
+
+  .brand-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #e0e0e0;        /* gris */
+    color: #333;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-size: 14px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    flex: 0 0 auto;
+  }
+
+  /* pausa al hover o al focus (accesible) */
+  .brand-reel:hover .brand-reel__track,
+  .brand-reel:focus-within .brand-reel__track {
+    animation-play-state: paused;
+  }
+
+  @keyframes reel-scroll {
+    from { transform: translateX(-10%); }
+    to   { transform: translateX(+5%); } /* se mueve la mitad porque el contenido está duplicado */
+  }
+
+  /* Responsive: reduce el padding y tamaño en pantallas pequeñas */
+  @media (max-width: 480px) {
+    .brand-chip { padding: 6px 10px; font-size: 13px; }
+    .brand-reel { padding: 6px 0; }
+  }
+
+
+.whatsapp-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 0;
-}
-
-.sidebar .logo {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.sidebar .logo img {
-  width: 120px;
-}
-
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar nav ul li {
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.sidebar nav ul li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 12px 20px;
-  transition: background 0.3s;
-}
-
-.sidebar nav ul li a:hover {
-  background: #333;
-}
-
-.sidebar nav ul li i {
-  margin-right: 10px;
-}
-
-.btn-arrep {
-  text-align: center;
-  margin-top: auto;
-  padding: 15px;
-}
-
-.btn-arrep a {
-  display: inline-block;
-  background: #00AEEF;
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 13px;
-}
-
-.btn-arrep a:hover {
-  background: #0091d1;
-}
-
-/* ====== Contenido principal ====== */
-.contenido {
-  margin-left: 250px;
-  padding: 40px;
-}
-
-.hero {
-  background:  rgb(255, 255, 255);
-  color: white;
-  padding: 40px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-/* ====== Footer ====== */
-.footer {
-  background-color: #000000;
-  color: white;
-  padding: 40px 20px;
+  bottom: 65px;
+  right: 20px;
+  z-index: 1000;
  
 }
 
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  border-bottom: 1px solid #444;
-  padding-bottom: 20px;
-}
 
-.footer-logo img {
-  width: 100px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 40px;
-}
-
-.footer-links h4 {
-  margin-bottom: 10px;
-  color: gold;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links ul li {
-  margin-bottom: 6px;
-}
-
-.footer-links ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.footer-links ul li a:hover {
-  color: gold;
-}
-
-.footer-links form {
-  display: flex;
-  margin-top: 10px;
-}
-
-.footer-links input {
-  padding: 8px;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-}
-
-.footer-links button {
-  background-color: gold;
-  border: none;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 0 4px 4px 0;
+.whatsapp {
+  width: 80px;
+  height: 80px;
   cursor: pointer;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 2px 2px 3px #e9f0ff;
+  animation: pulse 1.5s infinite;
 }
 
-.footer-bottom {
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);/*rgba(37, 211, 102, 0.7)---rgba(37, 162, 211, 0.7)---rgba(255, 255, 255, 0.7)*/
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+.social-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social-icons span {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.social-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  background-color: rgb(2, 154, 255);
+  border-radius: 80%;
+}
+#social-icon-youtube:hover{
+  background: rgb(255, 0, 0);
+}
+#social-icon-ig:hover{
+    background-color: violet;
+}
+.social-icon-tiktok:hover {
+  background-color: #2344ff;
+  border-radius: 100px;
+}
+
+/* === CATEGORÍAS DESPLEGABLES === */
+.categoria {
+  position: relative;
+}
+
+.categoria > a {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding-right: 8px;
+}
+
+.categoria .arrow {
+  transition: transform 0.3s ease;
+}
+
+.categoria.open .arrow {
+  transform: rotate(180deg);
+}
+
+.subcategorias {
+  list-style: none;
+  margin: 5px 0 0 20px;
+  padding-left: 0;
+  display: none;
+  flex-direction: column;
+}
+
+.subcategorias li {
+  margin: 6px 0;
+}
+
+.subcategorias li a {
+  color: #ccc;
+  font-size: 0.9em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.subcategorias li a:hover {
+  color: gold;
+}
+
+/* Mostrar al abrir */
+.categoria.open .subcategorias {
+  display: flex;
+}
+
+ :root{ --bg:#0f1724; --card:#0b1220; --accent:#22c1c3; --muted:#9aa4b2 }
+    *{box-sizing:border-box}
+    .gallery{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.7);overflow:hidden}
+
+    /* main area */
+    .stage{position:relative;padding:18px;display:grid;grid-template-columns:1fr;align-items:center}
+    .stage .frame{background:var(--card);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:420px}
+    .stage img{max-width:100%;max-height:72vh;display:block;user-select:none}
+
+    /* controls */
+    .btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(8,10,15,0.6);border:1px solid rgba(255,255,255,0.05);backdrop-filter:blur(6px);width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .btn:hover{background:rgba(8,10,15,0.8)}
+    .btn:active{transform:translateY(-50%) scale(.98)}
+    .btn.prev{left:14px}
+    .btn.next{right:14px}
+    .btn svg{width:18px;height:18px;fill:none;stroke:var(--accent);stroke-width:2}
+
+    /* info */
+    .info{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;color:var(--muted);font-size:14px}
+
+    /* thumbnails */
+    .thumbs{display:flex;gap:10px;padding:12px 18px 20px;overflow-x:auto}
+    .thumb{flex:0 0 auto;width:92px;height:64px;border-radius:6px;overflow:hidden;cursor:pointer;border:2px solid transparent}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumb.active{outline:3px solid rgba(34,193,195,0.18);box-shadow:inset 0 0 0 1px rgba(34,193,195,0.06)}
+
+    /* responsive */
+    @media (max-width:640px){
+      .stage .frame{min-height:300px}
+      .thumb{width:74px;height:54px}
+      .btn{width:40px;height:40px}
+    }
+
+    /* subtle caption */
+    .caption{font-size:13px;color:var(--muted)}
+
+    /* autoplay toggle */
+    .controls-row{display:flex;gap:12px;align-items:center}
+    .toggle{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;color:var(--muted);cursor:pointer}
+    .toggle.active{border-color:var(--accent);color:var(--accent)}
+  
+
+
+/* === GALERÍA ESTILO OSCURO === */
+.galeria {
   text-align: center;
-  margin-top: 20px;
+  padding: 40px 20px;
+  background: #000;
+  color: gold;
 }
 
-.footer-social a {
-  color: white;
-  margin: 0 8px;
-  font-size: 18px;
+.galeria h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.footer-social a:hover {
-  color: #00AEEF;
+.galeria-contenedor {
+  max-width: 900px;
+  margin: 0 auto;
 }
-.sidebar {
-  width: 220px;
-  height: 100vh;
-  background: #080000;
-  transition: all 0.4s ease;
-  position: fixed;
-  left: 0;
-  top: 0;
+
+.galeria-grande {
+  position: relative;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
-/*.sidebar.hidden {
-  width: 60px;
-  opacity: 0.7;
-}*/
-.sidebar.hidden {
-  transform: translateX(-100%);
-  opacity: 0;
+.galeria-grande img {
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+  transition: opacity 0.4s ease;
 }
-#video_header{
-    background-position:center;
+
+/* Botones de navegación */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  color: gold;
+  font-size: 1.4rem;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
 }
+
+.nav-btn:hover {
+  background: gold;
+  color: #000;
+}
+
+.nav-btn.prev { left: 15px; }
+.nav-btn.next { right: 15px; }
+
+/* Miniaturas */
+.galeria-miniaturas {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.galeria-miniaturas img {
+  width: 110px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+  border: 2px solid transparent;
+}
+
+.galeria-miniaturas img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.galeria-miniaturas img.activo {
+  opacity: 1;
+  border: 2px solid gold;
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .galeria-grande img { height: 320px; }
+  .galeria-miniaturas img { width: 80px; height: 55px; }
+}
+
 </style>
-</head>
-<body>
 
-<!-- ====== Barra lateral ====== -->
+</head>
+
+<body>
+<!-- === SIDEBAR === -->
 <aside id="sidebar" class="sidebar hidden">
   <div class="logo">
-    <img src="Assets/img/LOGO JB.jpg" alt="Tio Musa">
+    <img src="Assets/img/LOGO JB.jpg" alt="Logo JB Outlet">
   </div>
+
   <nav>
     <ul>
-      <li><a href="#"><i class="fa-solid fa-bars"></i> Categorías</a></li>
-      <li><a href="#"><i class="fa-solid fa-gift"></i> Gift Cards</a></li>
+      <!-- CATEGORÍAS PRINCIPALES -->
+      <li class="categoria">
+        <a href="#"><i class="fa-solid fa-tv"></i> Audio - TV - Video <i class="fa-solid fa-chevron-down arrow"></i></a>
+        <ul class="subcategorias">
+          <li><a href="#">Smart TV</a></li>
+          <li><a href="#">Proyectores</a></li>
+          <li><a href="#">Parlantes</a></li>
+          
+        </ul>
+      </li>
+
+      <li class="categoria">
+        <a href="#"><i class="fa-solid fa-blender"></i> Electro Hogar <i class="fa-solid fa-chevron-down arrow"></i></a>
+        <ul class="subcategorias">
+          <li><a href="#">Heladeras</a></li>
+          <li><a href="#">Lavarropas</a></li>
+          <li><a href="#">Cocinas</a></li>
+          <li><a href="#">Microondas</a></li>
+          <li><a href="#">Freidoras</a></li>
+       
+        </ul>
+      </li>
+
+      <li class="categoria">
+        <a href="#"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
+        <ul class="subcategorias">
+          <li><a href="#">Aires acondicionados</a></li>
+          <li><a href="#">Ventiladores</a></li>
+          <li><a href="#">Calefactores</a></li>
+          <li><a href="#">Termotanques</a></li>
+        </ul>
+      </li>
+
+
+      
+  <!-- ENLACES FIJOS -->
       <li><a href="#"><i class="fa-solid fa-store"></i> Sucursales</a></li>
       <li><a href="#"><i class="fa-solid fa-people-carry-box"></i> Ventas Mayoristas</a></li>
       <li><a href="#"><i class="fa-solid fa-coins"></i> Programa Bonus</a></li>
-      <li><a href="#"><i class="fa-solid fa-house"></i> Vivendi</a></li>
       <li><a href="#"><i class="fa-solid fa-tag"></i> Outlet</a></li>
     </ul>
   </nav>
+
   <div class="btn-arrep">
     <a href="#">BOTÓN DE ARREPENTIMIENTO</a>
   </div>
-<div>
-  <div class="nav-right">
-    <button class="btn-Google" id="btn-Google2">
-  <img src="https://cdn.prod.website-files.com/6804774958514b6a49cf7b87/687c2721c4366c6c8996cb65_google-meet-icon-sm.png" viewBox="0 0 48 48" class="google-meet-icon">
-    <path fill="#00832D" d="M29 16V9c0-1.1-.9-2-2-2H9C7.9 7 7 7.9 7 9v30c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-7l10 10V6L29 16z"/>
-    <path fill="#34A853" d="M41 6v36l-12-12V16L41 6z"/>
-    <path fill="#FBBC04" d="M29 16l12-10v20l-12-10z"/>
-    <path fill="#EA4335" d="M29 32l12 10V22l-12 10z"/>
-  </svg>
-  <span>Agendar una llamada</span>
-</button></div>
+
+  <button class="btn-Google" id="btn-Google2">
+    <img src="https://cdn.prod.website-files.com/6804774958514b6a49cf7b87/687c2721c4366c6c8996cb65_google-meet-icon-sm.png" alt="Google Meet" class="google-meet-icon">
+    <span>Agendar una llamada</span>
+  </button>
 </aside>
 
-<!-- ====== Encabezado ====== -->
-<header class="header">
-  <div id="logoBtn" class="logo-btn">
-    <span class="logo-text">JB/Outlet</span>
-    <span id="arrow" class="arrow">▶</span>
-  </div>
+  <!-- HEADER -->
+  <header class="header" id="logoBtn">
+    JB/Outlet <span id="arrow" class="arrow">▶</span>
+  </header>
 
+<!-- === NAVBAR HTML === -->
 <nav class="navbar">
-  <div class="nav-left">
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="#Productos.html">Productos</a>
+    <a href="#Envios.html">Envíos</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="Nosotros.html">Nosotros</a>
+  </div>
 
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Inicio</a>
-      <a href="#Productos.html">Productos</a>
-      <a href="#Envios.html">Envios</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="Nosotros.html">Nosotros</a>
+</nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video id="video_header" src="Assets/img/Promo.mp4" autoplay muted loop></video>
+    <div class="hero-content">
+      <h1>Bienvenido a <span>JB OUTLET</span></h1>
+      <p>Donde la calidad cuesta menos.</p>
+      <button class="btn-cotizacion" id="btnCotizar">COTIZACIÓN</button>
     </div>
-    
-  </div>
+  </section>
 
- 
+  <img class="Logo" src="Assets/img/LOGO JB.jpg" alt="Logo Animado JB">
 
-    <button id="theme-toggle">🌙</button>
-  </div>
-
-</nav>    
-
-</header>
-<!-- Botón Cotización -->
-<header class="hero">
- 
-<div> <video id="video_header" src="Assets/img/Promo.mp4"
-        autoplay
-        muted>
-</div>
-
-  <div class="hero-content">
-    <h1>Bienvenido a <span>JB OUTLET</span></h1>
-    <p>Outlet JB — Donde la calidad cuesta menos.</p>
-    <button class="btn-cotizacion" id="btnCotizar">COTIZACIÓN</button>
-  </div>
-
-</header>
-
-<img class="Logo" src="Assets/img/LOGO JB.jpg" width="10%" style="border-radius: 100px;">
-
-
-
-<!-- ====== Estilos ====== -->
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
-  }
-
-  /* Header */
-  .header {
-    display: flex;
-    align-items: center;
-    background: #000;
-    padding: 10px 20px;
-  }
-
-  .logo-btn {
-    color: yellow;
-    font-weight: bold;
-    font-size: 1.2em;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-
-  .arrow {
-    margin-left: 8px;
-    transition: transform 0.3s;
-  }
-
-  .arrow.open {
-    transform: rotate(90deg);
-  }
-
-  /* Sidebar */
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 260px;
-    height: 100vh;
-    background: #1e1e1e;
-    color: #fff;
-    padding: 20px;
-    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.5);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-  }
-
-  .sidebar:not(.hidden) {
-    transform: translateX(0);
-  }
-
-  .sidebar .logo img {
-    width: 120px;
-    margin-bottom: 20px;
-  }
-
-  .sidebar nav ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .sidebar nav ul li {
-    margin: 12px 0;
-  }
-
-  .sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: color 0.2s;
-  }
-
-  .sidebar nav ul li a:hover {
-    color: rgb(255, 255, 255);
-  }
-
-  .btn-arrep {
-    margin-top: 30px;
-  }
-
-  .btn-arrep a {
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    text-decoration: none;
-  }
-</style>
-
-<!-- ====== Script ====== -->
-<script>
-  const sidebar = document.getElementById('sidebar');
-  const logoBtn = document.getElementById('logoBtn');
-  const arrow = document.getElementById('arrow');
-
-  // Mostrar sidebar al pasar por JB/Outlet
-  logoBtn.addEventListener('mouseenter', () => {
-    sidebar.classList.remove('hidden');
-    arrow.classList.add('open');
-  });
-
-  // Ocultar sidebar al salir de ella
-  sidebar.addEventListener('mouseleave', () => {
-    sidebar.classList.add('hidden');
-    arrow.classList.remove('open');
-  });
-</script>
-
-
-  <!-- ====== Contenido principal (simulado) ====== -->
+  <!-- CONTENIDO -->
   <main class="contenido">
-    <section class="hero2">
-      <h1>Bienvenido al Outlet</h1>
-      <p>Productos nuevos, discontinuos, con detalles estéticos y garantía de fábrica.</p>
-    </section>
+    <h1>Bienvenido al Outlet</h1>
+    <p>Productos nuevos, discontinuos, con detalles estéticos y garantía de fábrica.</p>
   </main>
 
-  <!-- ====== Footer ====== -->
+<!-- === GALERÍA SIMPLE === -->
+<section class="galeria">
+  <h2>Galería de Productos</h2>
+
+  <div class="galeria-contenedor">
+    <div class="galeria-grande">
+      <img id="imagenPrincipal" src="Assets/img/Portal barracas negocio..jpg" alt="Imagen principal">
+      <button id="prev" class="nav-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button id="next" class="nav-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <div class="galeria-miniaturas">
+      <img src="Assets/img/SAMSUNG_INVERTER.jpg" alt="Miniatura 1" class="activo">
+      <img src="Assets/img/VITA PROMO HORNITO FLYER..jpg" alt="Miniatura 2">
+      <img src="Assets/img/WHIRPOL PROMO WHITA LAVAROPA.jpg" alt="Miniatura 3">
+      <img src="Assets/img/PROMO ATMA VARIOS MODELOS..jpg" alt="Miniatura 4">
+      <img src="Assets/img/PROMO GRAN BARATA FLYER-.jpg" alt="Miniatura 5">
+      <img src="Assets/img/NO SABES QUE ELEGIR NOSOTROS TE AYUDAMOS A ELEGIR..jpg" alt="Miniatura 6">
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Barra carrusel (pega donde quieras) -->
+
+<div class="brand-reel" aria-label="Marcas en movimiento">
+  <div class="brand-reel__track" role="list">
+    <!-- Lista original de marcas (primera copia) -->
+    <img src="Assets/icons/Enova Logo Fjellgr_____nn RGB-1.webp" width="80px">
+    <img src="Assets/icons/noblex-grey.svg" width="80px"> 
+    <img src="Assets/icons/hitachi-3.svg" width="80px">  
+    <img src="Assets/icons/MORELLI.png" width="80px">  
+    <img src="Assets/icons/Philco_blanco.png" width="80px"> 
+    <img src="Assets/icons/header-logo-436x127.png" width="80px" alt="Drean" title="Drean">  
+    <img src="Assets/icons/LG LOGO.jpg" width="80px"> 
+    <img src="Assets/icons/Logo Vitta.png" width="80px">
+    <img src="Assets/icons/whirlpool-logo-black-and-white-2.png" width="80px">  
+    <img src="Assets/icons/logo-alaska.png" width="80px"> 
+    <img src="Assets/icons/samsung-company-logo-south-korean-260nw-2394493913.webp" width="80px">  
+    <img src="Assets/icons/D_NQ_NP_968226-MLA49632576740_042022-O.webp" width="80px"> 
+
+    <img src="Assets/icons/images (1).png" width="80px"> 
+    <img src="Assets/icons/images.png" width="80px"> 
+
+    <!-- Repetimos las mismas marcas para crear el loop continuo -->
+      <img src="Assets/icons/gafa 2.png" width="80px">
+      <img src="Assets/icons/og_hitachi_logo.png" width="80px"> 
+      
+   
+  </div>
+</div>
+
+
+<div class="whatsapp-container">
+  <a href="https://wa.me/5491131433541" target="_blank">
+<img src="Assets/icons/Logo_whatsapp3.png" class="whatsapp" alt="WhatsApp" width="80px" height="80px"></a>
+</div>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
-        <img src="Assets/img/LOGO JB.jpg" alt="Tío Musa Logo">
+        <img src="Assets/img/LOGO JB.jpg" alt="Logo JB">
       </div>
 
       <div class="footer-links">
         <div>
           <h4>Información</h4>
           <ul>
-            <li><a href="#">Quiénes somos</a></li>
+            <li><a href="Nosotros.html">Quiénes somos</a></li>
             <li><a href="#">Sucursales</a></li>
             <li><a href="#">Trabajá con nosotros</a></li>
             <li><a href="#">Contacto</a></li>
@@ -738,21 +905,125 @@ body.light .card p {
 
         <div>
           <h4>Ventas mayoristas</h4>
-          <p>Dirección General de Defensa y Protección al Consumidor.<br>
-          Para consultas o denuncias <a href="#">ingresá aquí</a></p>
+          <p>Defensa y Protección al Consumidor.<br> Para consultas o denuncias <a href="#">ingresá aquí</a></p>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
       <p>&copy; 2025 JB-Outlet S.A. Todos los derechos reservados.</p>
-      <div class="footer-social">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-      </div>
-      <p>Tel: (11) 2706-3817 | WhatsApp: (11) 3143-3541</p>
+     <div class="social-icons">
+      <span>Sígueme:</span>
+      
+       <a href="https://www.facebook.com/profile.php?id=61554406261202&locale=cy_GB" target="_blank" rel="noopener noreferrer">
+        <img src="Assets/icons/facebook.svg" alt="Facebook" class="social-icon">
+      </a>
+      
+      <a href="https://www.instagram.com/j.b_outletpremium/" target="_blank" rel="noopener noreferrer">
+      <img src="Assets/icons/mandalaig.png" alt="Instagram" class="social-icon" id="social-icon-ig" >
+   <a href="https://www.tiktok.com/@j.b_outletpremium" target="_blank" rel="noopener noreferrer">
+        <img src="Assets/icons/tiktok.svg" alt="TikTok" class="social-icon-tiktok" width="25px"></a>
+     
+      
+      <!--   <p>Tel: (11) 2706-3817 | WhatsApp: (11) 3143-3541</p> <a href="https://x.com/tu_usuario" target="_blank" rel="noopener noreferrer">
+        <img src="Assets/Icons/x-logo.svg" alt="X / Twitter" class="social-icon">-->
+
+      
+    
+</div>
+   
+           
+      <a href="https://github.com/Mgabrizuela017" target="_blank" rel="noopener noreferrer">
+      <img src="Assets/Icons/icono_github.gif" alt="Git-hub / git_hub" style="border-radius: 100px;" class="social-icon">
+        <a href="https://mbtech.com.mx/index.html" target="_blank" rel="noopener noreferrer">
+      <img src="Assets/icons/MBTECH TRANSPARENTE HEADER.png" alt="MBTECH" style="border-radius: 100px;" class="social-icon">
+      </a>    
+  </div>
+    
     </div>
   </footer>
-</body>
-</html>
+
+  
+<!-- === SCRIPT para sincronizar con el aside === -->
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const logoBtn = document.getElementById('logoBtn');
+  const arrow = document.getElementById('arrow');
+  const hoverZone = document.createElement('div');
+
+  // Crear una zona invisible que detecta el mouse al acercarse
+  hoverZone.id = 'hoverZone';
+  document.body.appendChild(hoverZone);
+
+  // Funciones reutilizables
+  const showSidebar = () => {
+    sidebar.classList.remove('hidden');
+    arrow.classList.add('open');
+    document.body.classList.add('sidebar-open');
+  };
+
+  const hideSidebar = () => {
+    sidebar.classList.add('hidden');
+    arrow.classList.remove('open');
+    document.body.classList.remove('sidebar-open');
+  };
+
+  // Mostrar al pasar por el logo, flecha o zona sensible
+  logoBtn.addEventListener('mouseenter', showSidebar);
+  arrow.addEventListener('mouseenter', showSidebar);
+  hoverZone.addEventListener('mouseenter', showSidebar);
+
+  // Ocultar al salir del sidebar o la flecha
+  sidebar.addEventListener('mouseleave', hideSidebar);
+  arrow.addEventListener('mouseleave', () => {
+    const isOverSidebar = sidebar.matches(':hover');
+    if (!isOverSidebar) hideSidebar();
+  });
+
+
+  // Desplegable de categorías
+  document.querySelectorAll('.categoria > a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const parent = link.parentElement;
+      parent.classList.toggle('open');
+    });
+  });
+
+
+/* === GALERÍA INTERACTIVA === */
+const miniaturas = document.querySelectorAll('.galeria-miniaturas img');
+const imagenPrincipal = document.getElementById('imagenPrincipal');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+let indice = 0;
+
+// Cambiar imagen al hacer clic en miniatura
+miniaturas.forEach((thumb, i) => {
+  thumb.addEventListener('click', () => {
+    actualizarImagen(i);
+  });
+});
+
+// Botones anterior / siguiente
+prev.addEventListener('click', () => {
+  indice = (indice - 1 + miniaturas.length) % miniaturas.length;
+  actualizarImagen(indice);
+});
+next.addEventListener('click', () => {
+  indice = (indice + 1) % miniaturas.length;
+  actualizarImagen(indice);
+});
+
+function actualizarImagen(i) {
+  miniaturas.forEach(t => t.classList.remove('activo'));
+  miniaturas[i].classList.add('activo');
+  imagenPrincipal.style.opacity = 0;
+  setTimeout(() => {
+    imagenPrincipal.src = miniaturas[i].src;
+    imagenPrincipal.style.opacity = 1;
+  }, 250);
+  indice = i;
+}
+</script>
