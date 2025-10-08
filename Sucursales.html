@@ -32,6 +32,239 @@
   <script src="https://kit.fontawesome.com/7e4b4a16f8.js" crossorigin="anonymous"></script>
 
 <style>
+/* ===== Slider ===== */
+.slider {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s ease;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  height: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.slide .caption {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: #fff;
+  z-index: 2;
+}
+
+.slide .caption h1 {
+  font-size: 2.5rem;
+}
+
+.slide .caption p {
+  font-size: 1.1rem;
+}
+
+.slide .caption a {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: .8rem 1.5rem;
+  background: linear-gradient(90deg, #2a9d2f, #007BFF);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* Controles slider */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #fff;
+  background: rgba(0,0,0,.4);
+  padding: .5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 5;
+  user-select: none;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: .5rem;
+  z-index: 5;
+}
+
+.dots span {
+  width: 12px;
+  height: 12px;
+  background: #ffffff99;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dots .active { background: #fff; }
+
+/* ===== MAPA ===== */
+#mapa-sede-1 {
+  text-align: center;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+#mapa-sede-1 h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+#mapa-sede-1 iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== WHATSAPP ICON ===== */
+.whatsapp-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+}
+
+.whatsapp-container img {
+  width: 70px;
+  height: 70px;
+  transition: transform .3s ease;
+}
+
+.whatsapp-container img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .slide .caption h1 {
+    font-size: 2rem;
+  }
+
+  .slide .caption p {
+    font-size: 1rem;
+  }
+
+  #mapa-sede-1 iframe {
+    height: 400px;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .slider {
+    height: 60vh;
+  }
+
+  .slide .caption {
+    bottom: 15%;
+    left: 5%;
+  }
+
+  .slide .caption h1 {
+    font-size: 1.6rem;
+  }
+
+  .slide .caption p {
+    font-size: 0.9rem;
+  }
+
+  #mapa-sede-1 iframe {
+    height: 350px;
+  }
+
+  .whatsapp-container img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  .slider {
+    height: 50vh;
+  }
+
+  .slide .caption h1 {
+    font-size: 1.3rem;
+  }
+
+  .slide .caption p {
+    font-size: 0.8rem;
+  }
+
+  .slide .caption a {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  #mapa-sede-1 {
+    padding: 0 10px;
+  }
+
+  #mapa-sede-1 iframe {
+    height: 280px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links div {
+    margin-bottom: 20px;
+  }
+
+  .whatsapp-container {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-container img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
 </style>
 
 </head>
@@ -116,77 +349,46 @@
 
 </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <video id="video_header" src="Assets/img/Promo.mp4" autoplay muted loop></video>
-    <div class="hero-content">
-      <h1>Bienvenido a <span>JB OUTLET</span></h1>
-      <p>Donde la calidad cuesta menos.</p>
-      <button class="btn-cotizacion" id="btnCotizar">COTIZACIÓN</button>
-    </div>
-  </section>
-
-  <img class="Logo" src="Assets/img/LOGO JB.jpg" alt="Logo Animado JB">
-
-  <!-- CONTENIDO -->
-  <main class="contenido">
-    <h1>Bienvenido al Outlet</h1>
-    <p>Productos nuevos, discontinuos, con detalles estéticos y garantía de fábrica.</p>
-  </main>
-
-<!-- === GALERÍA SIMPLE === -->
-<section class="galeria">
-  <h2>Galería de Productos</h2>
-
-  <div class="galeria-contenedor">
-    <div class="galeria-grande">
-      <img id="imagenPrincipal" src="Assets/img/Portal barracas negocio..jpg" alt="Imagen principal">
-      <button id="prev" class="nav-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-      <button id="next" class="nav-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-
-    <div class="galeria-miniaturas">
-      <img src="Assets/img/SAMSUNG_INVERTER.jpg" alt="Miniatura 1" class="activo">
-      <img src="Assets/img/VITA PROMO HORNITO FLYER..jpg" alt="Miniatura 2">
-      <img src="Assets/img/WHIRPOL PROMO WHITA LAVAROPA.jpg" alt="Miniatura 3">
-      <img src="Assets/img/PROMO ATMA VARIOS MODELOS..jpg" alt="Miniatura 4">
-      <img src="Assets/img/PROMO GRAN BARATA FLYER-.jpg" alt="Miniatura 5">
-      <img src="Assets/img/NO SABES QUE ELEGIR NOSOTROS TE AYUDAMOS A ELEGIR..jpg" alt="Miniatura 6">
-    </div>
-  </div>
-</section>
-
-
-
-  <!-- Barra carrusel (pega donde quieras) -->
-
-<div class="brand-reel" aria-label="Marcas en movimiento">
-  <div class="brand-reel__track" role="list">
-    <!-- Lista original de marcas (primera copia) -->
-    <img src="Assets/icons/Enova Logo Fjellgr_____nn RGB-1.webp" width="80px">
-    <img src="Assets/icons/noblex-grey.svg" width="80px"> 
-    <img src="Assets/icons/hitachi-3.svg" width="80px">  
-    <img src="Assets/icons/MORELLI.png" width="80px">  
-    <img src="Assets/icons/Philco_blanco.png" width="80px"> 
-    <img src="Assets/icons/header-logo-436x127.png" width="80px" alt="Drean" title="Drean">  
-    <img src="Assets/icons/LG LOGO.jpg" width="80px"> 
-    <img src="Assets/icons/Logo Vitta.png" width="80px">
-    <img src="Assets/icons/whirlpool-logo-black-and-white-2.png" width="80px">  
-    <img src="Assets/icons/logo-alaska.png" width="80px"> 
-    <img src="Assets/icons/samsung-company-logo-south-korean-260nw-2394493913.webp" width="80px">  
-    <img src="Assets/icons/D_NQ_NP_968226-MLA49632576740_042022-O.webp" width="80px"> 
-
-    <img src="Assets/icons/images (1).png" width="80px"> 
-    <img src="Assets/icons/images.png" width="80px"> 
-
-    <!-- Repetimos las mismas marcas para crear el loop continuo -->
-      <img src="Assets/icons/gafa 2.png" width="80px">
-      <img src="Assets/icons/og_hitachi_logo.png" width="80px"> 
-      
-   
-  </div>
+ <!-- SLIDER PRINCIPAL -->
+<div class="slides">
+<div class="slide">
+<img src="Assets/img/Portal barracas negocio..jpg" alt="Slide 1">
+<div class="caption">
+<!--<h1>Bienvenido</h1>
+<p>Este es nuestro sitio</p>
+<a href="#">Conócenos</a>-->
+</div>
 </div>
 
+</div>
+</div>
+</div>
+
+<span></span>
+<span></span>
+</div>
+</div>
+
+<img class="Logo" src="Assets/img/LOGO JB.jpg" alt="Logo Animado JB">
+
+<div id="mapa-sede-1">
+  <h3>Dirección Sede Barracas</h3>
+  <iframe
+    src="https://www.google.com/maps/d/u/0/embed?mid=1oeP4CLuzdOUi_1BKfK4YPZYyGYyHBes&ehbc=2E312F&noprof=1"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+
+
+<!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-a0528c75-2757-48ef-a350-3307e0527958" data-elfsight-app-lazy></div>
 
 <div class="whatsapp-container">
   <a href="https://wa.me/5491131433541" target="_blank">
