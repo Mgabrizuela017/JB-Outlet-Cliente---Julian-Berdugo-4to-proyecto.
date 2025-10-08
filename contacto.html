@@ -32,6 +32,167 @@
   <script src="https://kit.fontawesome.com/7e4b4a16f8.js" crossorigin="anonymous"></script>
 
 <style>
+/* ==== CONTENEDOR PRINCIPAL ==== */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg, #0a0a0a 70%, #1b1b1b);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ==== INFORMACIÓN DE CONTACTO (mejorada) ==== */
+.info {
+  flex: 1 1 350px;
+  background-color: #111;
+  border: 1px solid #b8860b;
+  border-radius: 16px;
+  padding: 40px; /* antes era 30px */
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.3);
+  transition: all 0.3s ease;
+  min-height: 620px; /* 👈 más alta para emparejar con el formulario */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Encabezado */
+.info h2 {
+  color: #ffd700;
+  border-bottom: 2px solid #b8860b;
+  padding-bottom: 10px;
+  margin-bottom: 20px; /* más espacio debajo */
+}
+
+/* Párrafos con más aire */
+.info p {
+  color: #ddd;
+  line-height: 1.8; /* más espacio entre líneas */
+  margin: 12px 0; /* antes era 8px */
+  letter-spacing: 0.3px;
+}
+
+/* Secciones de contacto más separadas */
+.info strong {
+  color: #fff;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+/* Redes sociales separadas y centradas */
+.redes {
+  margin-top: 30px; /* más margen superior */
+  display: flex;
+  flex-direction:row;
+  align-items: flex-start;
+  gap: 10px;
+  
+}
+
+.redes a img {
+  border-radius: 100px;
+  margin-right: 4px;
+  
+  
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.redes a img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.3);
+}
+
+
+/* ==== FORMULARIO ==== */
+.formulario {
+  flex: 1 1 350px;
+  background-color: #111;
+  border: 1px solid #b8860b;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(184, 134, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.formulario:hover {
+  box-shadow: 0 0 25px rgba(184, 134, 11, 0.6);
+}
+
+.formulario h2 {
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  background: #1a1a1a;
+  border: 1px solid #b8860b;
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #b8860b, #ffd700);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #ffd700, #b8860b);
+  transform: scale(1.02);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+}
+
+/* ==== REDES SOCIALES ==== */
+.redes {
+  margin-top: 20px;
+}
+
+.redes p {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+}
+
 </style>
 
 </head>
@@ -116,6 +277,85 @@
   </div>
 
 </nav>
+  <img class="Logo" src="Assets/img/LOGO JB.jpg" alt="Logo Animado JB">
+
+
+<div class="container">
+  <!-- Información de contacto -->
+  <div class="info">
+    <p>Gracias por visitarnos. Por consultas y/o sugerencias, no dudes en dejarnos tu mensaje.</p>
+    <h2>Sedes</h2>
+   <p><strong>Sede Barracas</strong><br>Dirección: Av. Suárez 1334 
+ /<br>
+C1288AED Cdad. Autónoma de Buenos Aires.</p>
+
+
+   <p><strong>Sede Lomas</strong><br>Dirección: Av. Brig. Gral. Juan Manuel de Rosas 1063
+ /<br>
+B1752DRK Lomas del Mirador, Provincia de Buenos Aires.</p>
+
+    <p><strong>Email:</strong> JB-OutletElectrodomesticos@gmail.com<br>
+    <strong>Teléfono:</strong> (11) 2706-3817<br>
+    <strong>Teléfono:</strong> (11) 3143-3541</p>
+
+
+    <div class="redes">
+      <p>Seguinos en nuestras redes:</p>
+      <a href="https://www.facebook.com/profile.php?id=61554406261202&locale=cy_GB"><img src="Assets/icons/logo_fb.avif" width="30px" style="box-shadow: none;"></a>
+      <a href="https://www.instagram.com/j.b_outletpremium/?hl=es"><img src="Assets/icons/logo_ig.avif" width="30px" style="box-shadow: none;"></a>
+      <a href="https://www.tiktok.com/@j.b_outletpremium"><img src="Assets/icons/logo_tiktok.avif" width="30px" style="box-shadow: none;"></a>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="formulario">
+        <div id="Consultas">
+      <h2 id="abierto">Consultas: <span class="icono"></span></h2>
+      <form>
+      <label for="interes">Tengo interés en *</label>
+      <select id="interes" required>
+        <option value="">Seleccione</option>
+        <option value="cumpleaños">Cumpleaños</option>
+        <option value="casamiento">Casamiento</option>
+        <option value="corporativo">Evento corporativo</option>
+      </select>
+
+      <label for="nombre">Nombre *</label>
+      <input type="text" id="nombre" required>
+
+      <label for="apellido">Apellido *</label>
+      <input type="text" id="apellido" required>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" required>
+
+      <label for="telefono">Teléfono *</label>
+      <input type="tel" id="telefono" required>
+
+      <label for="provincia">Provincia *</label>
+      <select id="provincia" required>
+        <option value="">Seleccione</option>
+        <option value="buenosaires">Buenos Aires</option>
+        <option value="Caba">Caba</option>
+     
+      </select>
+
+      <label for="localidad">Localidad *</label>
+      <input type="text" id="localidad" required>
+
+      <label for="mensaje">Mensaje *</label>
+      <textarea id="mensaje" rows="5" required></textarea>
+
+      <button type="submit">ENVIAR</button>
+    </form>
+    </div>
+  </div>
+
+  </div>
+</div>
+</div>
+</section>
+ 
 
 <!-- FOOTER -->
   <footer class="footer">
