@@ -213,6 +213,26 @@ button[type="submit"]:hover {
   color: #333;
 }
 
+/* === RESPONSIVE INFO REDES SOCIALES === */
+@media (max-width: 768px) {
+  .info .redes {
+    flex-direction: row;       /* mantener los íconos en fila */
+    flex-wrap: wrap;           /* que bajen si no entran */
+    justify-content: flex-start; /* alineados al inicio */
+    gap: 10px;
+  }
+
+  .info .redes p {
+    width: 100%;               /* que el texto ocupe toda la línea */
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .info .redes a img {
+    width: 30px;               /* tamaño fijo para móviles */
+    height: auto;
+  }
+}
 
 </style>
 
