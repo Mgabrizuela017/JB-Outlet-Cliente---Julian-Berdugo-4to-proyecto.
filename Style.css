@@ -409,6 +409,31 @@
     box-shadow: 0 1px 0 rgba(0,0,0,0.03);
     flex: 0 0 auto;
   }
+@media (max-width: 480px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links div {
+    margin-bottom: 20px;
+  }
+
+  .whatsapp-container {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-container img {
+    width: 55px;
+    height: 55px;
+  }
+}
 
   /* pausa al hover o al focus (accesible) */
   .brand-reel:hover .brand-reel__track,
