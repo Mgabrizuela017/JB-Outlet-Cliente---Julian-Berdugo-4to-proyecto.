@@ -193,127 +193,99 @@
     }
 
     /* === HERO === */
-    .hero {
-      position: relative;
-      height: 90vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    /*background: linear-gradient(135deg, #000, gold, #000);*/
-    }
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #000 50%, #111);
+  perspective: 1000px; /* Para efecto 3D */
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: #ffffff;
-    }
+/* === MONEDA GIRATORIA === */
+.logo-fondo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, gold 0%, #b8860b 40%, #000 100%);
+  overflow: hidden;
+  animation: girarMoneda 6s linear infinite;
+  z-index: 0;
+  opacity: 0.2;
+  box-shadow:
+    0 0 25px gold,
+    inset 0 0 30px rgba(255, 215, 0, 0.6),
+    inset 0 0 10px #fff;
+}
 
-    .hero-content h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
+/* Imagen del logo dentro de la moneda */
+.logo-fondo img {
+  width: 94%;
+  height: 94%;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  box-shadow:
+    inset 0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 50px rgba(255, 255, 255, 0.2);
+}
 
-    .hero-content h1 span {
-      color: gold;
-    }
+/* Animación 3D tipo moneda */
+@keyframes girarMoneda {
+  0% { transform: translate(-50%, -50%) rotateY(0deg); }
+  50% { transform: translate(-50%, -50%) rotateY(180deg); }
+  100% { transform: translate(-50%, -50%) rotateY(360deg); }
+}
 
-    .hero-content p {
-      margin-bottom: 1.5rem;
-    }
+/* === CONTENIDO PRINCIPAL === */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 0 10px gold, 0 0 20px #fff;
+}
 
-    .btn-cotizacion {
-      background: gold;
-      border: none;
-      color: #000;
-      padding: 12px 24px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
 
-    .btn-cotizacion:hover {
-      background: #ffeb3b;
-    }
+.hero-content h1 span {
+  color: gold;
+  text-shadow: 0 0 15px #fff, 0 0 30px gold;
+}
 
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.2;
-      z-index: 0;
-    }
+.hero-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
 
-    /* === LOGO ANIMADO === */
-    .Logo {
-      display: block;
-      margin: 2rem auto;
-      width: 13%;
-      border-radius: 100px;
-      animation: spinCoin 4s ease-in-out infinite;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-    }
+.btn-cotizacion {
+  background: gold;
+  border: none;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px gold;
+}
 
-    @keyframes spinCoin {
-      0% { transform: rotateY(0deg); }
-      100% { transform: rotateY(360deg); }
-    }
+.btn-cotizacion:hover {
+  background: #ffeb3b;
+  box-shadow: 0 0 20px #ffeb3b, 0 0 40px gold;
+}
 
-    .Logo:hover {
-      animation-play-state: paused;
-    }
-
-    /* === BOTÓN GOOGLE === */
-    .btn-Google {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      color: white;
-      background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335);
-      background-size: 300% 300%;
-      animation: gradientShift 8s ease infinite;
-      transition: transform 0.2s ease;
-      margin: 10px auto;
-    }
-
-    .btn-Google:hover {
-      transform: scale(1.05);
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .google-meet-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* === CONTENIDO === */
-    .contenido {
-      margin-left: 0;
-      padding: 40px 20px;
-      text-align: center;
-      
-    }
-
-    .contenido h1 {
-      color: gold;
-      margin-bottom: 10px;
-    }
 
     /* === FOOTER === */
     .footer {
