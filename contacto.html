@@ -213,8 +213,15 @@ button[type="submit"]:hover {
   color: #333;
 }
 
-/* === RESPONSIVE INFO REDES SOCIALES === */
+/* ==== RESPONSIVE GENERAL ==== */
 @media (max-width: 768px) {
+  /* Contenedor principal: columnas a filas */
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  /* Información de contacto: redes sociales responsivas */
   .info .redes {
     flex-direction: row;       /* mantener los íconos en fila */
     flex-wrap: wrap;           /* que bajen si no entran */
@@ -231,7 +238,6 @@ button[type="submit"]:hover {
   .info .redes a img {
     width: 30px;               /* tamaño fijo para móviles */
     height: auto;
-    
   }
 }
 
