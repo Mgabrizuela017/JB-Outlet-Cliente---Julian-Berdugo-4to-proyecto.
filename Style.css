@@ -260,8 +260,8 @@
 }
 
 .hero-content h1 span {
-  color: gold;
-  text-shadow: 0 0 15px #fff, 0 0 30px gold;
+  color: rgb(212, 199, 8);
+  text-shadow: 0 0 15px #000000, 0 0 30px gold;
 }
 
 .hero-content p {
