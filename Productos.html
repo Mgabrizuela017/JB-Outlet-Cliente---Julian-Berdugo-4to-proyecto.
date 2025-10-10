@@ -32,6 +32,139 @@
   <script src="https://kit.fontawesome.com/7e4b4a16f8.js" crossorigin="anonymous"></script>
 
 <style>
+/* === GRID DE PRODUCTOS === */
+.productos-grid {
+  padding: 50px 20px;
+  background: #f7f7f7;
+  text-align: center;
+  margin: auto 0;
+
+}
+
+.titulo-seccion {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Contenedor grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-content: center;
+
+  /* === NUEVO === */
+  max-width: 1100px; /* controla el ancho total del grid */
+  margin: 0 auto;    /* centra el contenedor en la pantalla */
+  padding: 0 20px;   /* espacio lateral */
+}
+
+/* Tarjetas de producto */
+.producto-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.6); /* sombra dorada */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.producto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+}
+
+/* Imagen del producto */
+.producto-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Texto del producto */
+.producto-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.producto-info h3 {
+  font-size: 1.2em;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.producto-info .marca {
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.producto-info .descripcion {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.producto-info .precio {
+  font-size: 1.1em;
+  color: #b8860b; /* dorado oscuro */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Botones */
+.botones-producto {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.botones-producto button {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Botón Ver más */
+.btn-ver {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-ver:hover {
+  background: #dcdcdc;
+}
+
+/* Botón Agregar al carrito */
+.btn-carrito {
+  background: linear-gradient(90deg, #d4af37, #b8860b);
+  color: white;
+}
+
+.btn-carrito:hover {
+  background: linear-gradient(90deg, #ffcc33, #d4af37);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .producto-card img {
+    height: 180px;
+  }
+
+  .botones-producto {
+    flex-direction: column;
+  }
+}
+
 </style>
 
 </head>
@@ -46,12 +179,12 @@
   <nav>
     <ul>
       <!-- CATEGORÍAS PRINCIPALES -->
-      <li class="categoria">
+     <li class="categoria">
         <a href="#"><i class="fa-solid fa-tv"></i> Audio - TV - Video <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="#">Smart TV</a></li>
-          <li><a href="#">Proyectores</a></li>
-          <li><a href="#">Parlantes</a></li>
+          <li><a href="#SmartTV">Smart TV</a></li>
+          <li><a href="#Parlantes">Parlantes</a></li>
+          <li><a href="#">Proyectores</a></li> 
           
         </ul>
       </li>
@@ -59,7 +192,7 @@
       <li class="categoria">
         <a href="#"><i class="fa-solid fa-blender"></i> Electro Hogar <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="#">Heladeras</a></li>
+          <li><a href="Electrohogar.html">Heladeras</a></li>
           <li><a href="#">Lavarropas</a></li>
           <li><a href="#">Cocinas</a></li>
           <li><a href="#">Microondas</a></li>
@@ -67,7 +200,7 @@
        
         </ul>
       </li>
-
+       
       <li class="categoria">
         <a href="#"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
@@ -81,9 +214,9 @@
 
       
   <!-- ENLACES FIJOS -->
-      <li><a href="#"><i class="fa-solid fa-people-carry-box"></i> Ventas Mayoristas</a></li>
-      <li><a href="#"><i class="fa-solid fa-coins"></i> Programa Bonus</a></li>
-      <li><a href="#"><i class="fa-solid fa-tag"></i> Outlet</a></li>
+      <li><a href="Ventas-mayoristas"><i class="fa-solid fa-people-carry-box"></i> Ventas Mayoristas</a></li>
+      <li><a href="#Bonus"><i class="fa-solid fa-coins"></i> Programa Bonus</a></li>
+      <li><a href="#Outlet"><i class="fa-solid fa-tag"></i> Outlet</a></li>
       <li><a href="Sucursales.html"><i class="fa-solid fa-store"></i> Sucursales</a></li>
 
     </ul>
@@ -116,6 +249,223 @@
   </div>
 
 </nav>
+
+
+<section class="productos-grid">
+  <h2 class="titulo-seccion">Nuestros Productos</h2>
+
+<h3 class="titulo-seccion" id="SmartTV">Smart TV</h3> 
+
+  <div class="grid-container">
+
+    <!-- === Producto 6 === -->
+    <div class="producto-card">
+      <img src="Assets/img/KANJI SMART.jfif" alt="SMART TV KANJI 40 PULGADAS">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">KANJI 40 PULGADAS</p>
+        <p class="descripcion">40 PULGADAS, GOOGLE TV FULL HD</p>
+        <p class="precio">$ 440.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-kanji-40-pulgadas-google-tv-full-hd/316">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 7 === -->
+    <div class="producto-card">
+      <img src="Assets/img/kanji smart 50.jfif" alt="SMART TV KANJI 50 PULGADAS">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">KANJI 50 PULGADAS</p>
+        <p class="descripcion">SMART TV KANJI 50 PULGADAS QLED PRIMERA</p>
+        <p class="precio">$ 570.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-kanji-50-pulgadas-qled-primera/295">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+<!-- === Producto 5 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Smart 50 kodak.jfif" alt="Secarropas Drean">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">SMART TV KODAK </p>
+        <p class="descripcion">50 PULGADAS DE PRIMERA.</p>
+        <p class="precio">$ 510.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-kodak-50-pulgadas-de-primera/240">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+     <div class="producto-card">
+      <img src="Assets/img/smart tv 32 philips.jfif" alt="SMART TV KANJI 40 PULGADAS">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">SMART TV PHILIPS</p>
+        <p class="descripcion"> ANDROID 32"</p>
+        <p class="precio">$ 320.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-philips-android-32/95">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+ <div class="producto-card">
+      <img src="Assets/img/smart philips 43.jfif" alt="SMART TV KANJI 40 PULGADAS">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">SMART TV PHILIPS</p>
+        <p class="descripcion"> "SMART TV PHILIPS 43" PRIMERA"</p>
+        <p class="precio">$ 460.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-philips-43-primera/15323D5A-4181-4837-B1ED-B2501BF734EE">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+<div class="producto-card">
+      <img src="Assets/img/rca smart 65.jfif" alt="SMART TV KANJI 40 PULGADAS">
+      <div class="producto-info">
+        <h3>SMART TV</h3>
+        <p class="marca">SMART TV RCA 65</p>
+        <p class="descripcion"> "SMART TV RCA 65 PULGADAS PRIMERA"</p>
+        <p class="precio">$ 980.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/smart-tv-rca-65-pulgadas-primera/05242E5F-7736-4BF8-A520-51E20FBFEE8C">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+  <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Parlante noblex.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info" id="Parlante">
+        <h3>PARLANTES</h3>
+        <p class="marca">PARLANTE NOBLEX</p>
+        <p class="descripcion">BLUETOOTH NEGRO 100v/240v</p>
+        <p class="precio">$ 180.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/parlante-noblex-con-bluetooth-negro-100v240v/226">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+  <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/parlante rocket.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>PARLANTES</h3>
+        <p class="marca">PARLANTE ROCKET</p>
+        <p class="descripcion">BLUETOOTH Y BATERIA INTERNA.</p>
+        <p class="precio">$ 350.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/parlante-rocket-con-bluetooth-y-bateria-interna/426">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+  <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/parlante volcano 3x8.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">PARLANTE VOLCANO 3X8 </p>
+        <p class="descripcion">BLUETOOTH Y BATERIA INTERNA PRIMERA.</p>
+        <p class="precio">$ 260.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/parlante-volcano-3x8-con-bluetooth-y-bateria-interna-primera/425">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+  <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/parlante stromberg.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>PARLANTE</h3>
+        <p class="marca">PARLANTE STROMBERG</p>
+        <p class="descripcion">100W PRIMERA.</p>
+        <p class="precio">$ 190.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/parlante-stromberg-100w-primera/475">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Samsung rt38.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung - Modelo RT38</p>
+        <p class="descripcion">Capacidad 380L, eficiencia A+, congelador superior.</p>
+        <p class="precio">$ 1.170.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt-38-380-lts-no-frost-inverter/55">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 2 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Samsung rt38 inverter.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung RT38 Inverter</p>
+        <p class="descripcion">380 LTS NO FROST, INVERTER.</p>
+        <p class="precio">$ 1.169.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt-38-380-lts-no-frost-inverter/52">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 3 === -->
+    <div class="producto-card">
+      <img src="Assets/img/samsung blanca outlet heladera.jfif" alt="Heladera No Frost Samsung RT32">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung RT32</p>
+        <p class="descripcion">NO FROST INVERTER OUTLET</p>
+        <p class="precio">$ 740.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt32-no-frost-inverter-outlet/405">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 4 === -->
+    <div class="producto-card">
+      <img src="Assets/img/LAVASECARROPA LG 9.5 KG INVERTER ACERO.jfif" alt="Lavasecarropas LG">
+      <div class="producto-info">
+        <h3>Lavasecarropas Automático</h3>
+        <p class="marca">LG - Modelo TurboWash</p>
+        <p class="descripcion">9.5 KG, INVERTER ACERO, 1200 RPM, panel digital.</p>
+        <p class="precio">$ 1.340.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/lavasecarropa-lg-95-kg-inverter-acero/479">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+</section>
+
 
 <!-- FOOTER -->
   <footer class="footer">

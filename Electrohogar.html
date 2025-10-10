@@ -32,236 +32,136 @@
   <script src="https://kit.fontawesome.com/7e4b4a16f8.js" crossorigin="anonymous"></script>
 
 <style>
-/* ===== Slider ===== */
-.slider {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-  background: #000;
-}
-
-.slides {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform .6s ease;
-}
-
-.slide {
-  width: 100%;
-  flex-shrink: 0;
-  height: 100%;
-  position: relative;
-}
-
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-}
-
-.slide .caption {
-  position: absolute;
-  bottom: 20%;
-  left: 10%;
-  color: #fff;
-  z-index: 2;
-}
-
-.slide .caption h1 {
-  font-size: 2.5rem;
-}
-
-.slide .caption p {
-  font-size: 1.1rem;
-}
-
-.slide .caption a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: .8rem 1.5rem;
-  background: linear-gradient(90deg, #2a9d2f, #007BFF);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-/* Controles slider */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  color: #fff;
-  background: rgba(0,0,0,.4);
-  padding: .5rem;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 5;
-  user-select: none;
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
-
-/* Dots */
-.dots {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: .5rem;
-  z-index: 5;
-}
-
-.dots span {
-  width: 12px;
-  height: 12px;
-  background: #ffffff99;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dots .active { background: #fff; }
-
-/* ===== MAPA ===== */
-#mapa-sede-1 {
+/* === GRID DE PRODUCTOS === */
+.productos-grid {
+  padding: 50px 20px;
+  background: #f7f7f7;
   text-align: center;
-  margin: 40px auto;
-  width: 100%;
-  max-width: 800px;
+  margin: auto 0;
+
 }
 
-#mapa-sede-1 h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+.titulo-seccion {
+  font-size: 2em;
   color: #222;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
-#mapa-sede-1 iframe {
+/* Contenedor grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-content: center;
+
+  /* === NUEVO === */
+  max-width: 1100px; /* controla el ancho total del grid */
+  margin: 0 auto;    /* centra el contenedor en la pantalla */
+  padding: 0 20px;   /* espacio lateral */
+}
+
+/* Tarjetas de producto */
+.producto-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(218, 165, 32, 0.6); /* sombra dorada */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.producto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+}
+
+/* Imagen del producto */
+.producto-card img {
   width: 100%;
-  height: 450px;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Texto del producto */
+.producto-info {
+  padding: 15px;
+  text-align: left;
+}
+
+.producto-info h3 {
+  font-size: 1.2em;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.producto-info .marca {
+  color: #555;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.producto-info .descripcion {
+  font-size: 0.95em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.producto-info .precio {
+  font-size: 1.1em;
+  color: #b8860b; /* dorado oscuro */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* Botones */
+.botones-producto {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.botones-producto button {
+  flex: 1;
+  padding: 10px 12px;
   border: none;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* ===== WHATSAPP ICON ===== */
-.whatsapp-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99;
+/* Botón Ver más */
+.btn-ver {
+  background: #f0f0f0;
+  color: #333;
 }
 
-.whatsapp-container img {
-  width: 70px;
-  height: 70px;
-  transition: transform .3s ease;
+.btn-ver:hover {
+  background: #dcdcdc;
 }
 
-.whatsapp-container img:hover {
-  transform: scale(1.1);
+/* Botón Agregar al carrito */
+.btn-carrito {
+  background: linear-gradient(90deg, #d4af37, #b8860b);
+  color: white;
 }
 
-/* ===== MEDIA QUERIES ===== */
-
-/* Tablets y pantallas medianas */
-@media (max-width: 1024px) {
-  .slide .caption h1 {
-    font-size: 2rem;
-  }
-
-  .slide .caption p {
-    font-size: 1rem;
-  }
-
-  #mapa-sede-1 iframe {
-    height: 400px;
-  }
+.btn-carrito:hover {
+  background: linear-gradient(90deg, #ffcc33, #d4af37);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  transform: scale(1.05);
 }
 
-/* Celulares grandes */
-@media (max-width: 768px) {
-  .slider {
-    height: 60vh;
+/* Responsive */
+@media (max-width: 600px) {
+  .producto-card img {
+    height: 180px;
   }
 
-  .slide .caption {
-    bottom: 15%;
-    left: 5%;
-  }
-
-  .slide .caption h1 {
-    font-size: 1.6rem;
-  }
-
-  .slide .caption p {
-    font-size: 0.9rem;
-  }
-
-  #mapa-sede-1 iframe {
-    height: 350px;
-  }
-
-  .whatsapp-container img {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-/* Celulares pequeños */
-@media (max-width: 480px) {
-  .slider {
-    height: 50vh;
-  }
-
-  .slide .caption h1 {
-    font-size: 1.3rem;
-  }
-
-  .slide .caption p {
-    font-size: 0.8rem;
-  }
-
-  .slide .caption a {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  #mapa-sede-1 {
-    padding: 0 10px;
-  }
-
-  #mapa-sede-1 iframe {
-    height: 280px;
-  }
-
-  .footer-container {
+  .botones-producto {
     flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-links div {
-    margin-bottom: 20px;
-  }
-
-  .whatsapp-container {
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .whatsapp-container img {
-    width: 55px;
-    height: 55px;
   }
 }
 
@@ -277,58 +177,46 @@
   </div>
 
   <nav>
-     <!-- CATEGORÍAS PRINCIPALES -->
-      
-
-      <li class="categoria">
-        <a href="Productos.html"><i class="fa-solid fa-blender"></i> Electro Hogar <i class="fa-solid fa-chevron-down arrow"></i></a>
+    <ul>
+      <!-- CATEGORÍAS PRINCIPALES -->
+     <li class="categoria">
+        <a href="#"><i class="fa-solid fa-tv"></i> Audio - TV - Video <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="Productos.html">Heladeras</a></li>
-          <li><a href="Productos.html">Lavarropas</a></li>
-          <li><a href="Productos.html">Cocinas</a></li>
-          <li><a href="Productos.html">Microondas</a></li>
-          <li><a href="Productos.html">Freidoras</a></li>
-       
-        </ul>
-      </li>
-
-<li class="categoria">
-        <a href="Productos.html"><i class="fa-solid fa-tv"></i> Audio - TV - Video <i class="fa-solid fa-chevron-down arrow"></i></a>
-        <ul class="subcategorias">
-          <li><a href="Productos.html">Smart TV</a></li>
-          <li><a href="Productos.html">Proyectores</a></li>
-          <li><a href="Productos.html">Parlantes</a></li>
+          <li><a href="#SmartTV">Smart TV</a></li>
+          <li><a href="#Parlantes">Parlantes</a></li>
+          <li><a href="#">Proyectores</a></li> 
           
         </ul>
       </li>
 
       <li class="categoria">
-        <a href="Productos.html"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
+        <a href="#"><i class="fa-solid fa-blender"></i> Electro Hogar <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="Productos.html">Aires acondicionados</a></li>
-          <li><a href="Productos.html">Ventiladores</a></li>
-          <li><a href="Productos.html">Calefactores</a></li>
-          <li><a href="Productos.html">Termotanques</a></li>
+          <li><a href="Electrohogar.html">Heladeras</a></li>
+          <li><a href="#">Lavarropas</a></li>
+          <li><a href="#">Cocinas</a></li>
+          <li><a href="#">Microondas</a></li>
+          <li><a href="#">Freidoras</a></li>
+       
         </ul>
       </li>
-
-
+       
       <li class="categoria">
-        <a href="Productos.html"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
+        <a href="#"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="Productos.html">Aires acondicionados</a></li>
-          <li><a href="Productos.html">Ventiladores</a></li>
-          <li><a href="Productos.html">Calefactores</a></li>
-          <li><a href="Productos.html">Termotanques</a></li>
+          <li><a href="#">Aires acondicionados</a></li>
+          <li><a href="#">Ventiladores</a></li>
+          <li><a href="#">Calefactores</a></li>
+          <li><a href="#">Termotanques</a></li>
         </ul>
       </li>
 
 
       
   <!-- ENLACES FIJOS -->
-      <li><a href="Productos.html"><i class="fa-solid fa-people-carry-box"></i> Ventas Mayoristas</a></li>
-      <li><a href="Productos.html"><i class="fa-solid fa-coins"></i> Programa Bonus</a></li>
-      <li><a href="Productos.html"><i class="fa-solid fa-tag"></i> Outlet</a></li>
+      <li><a href="Ventas-mayoristas"><i class="fa-solid fa-people-carry-box"></i> Ventas Mayoristas</a></li>
+      <li><a href="#Bonus"><i class="fa-solid fa-coins"></i> Programa Bonus</a></li>
+      <li><a href="#Outlet"><i class="fa-solid fa-tag"></i> Outlet</a></li>
       <li><a href="Sucursales.html"><i class="fa-solid fa-store"></i> Sucursales</a></li>
 
     </ul>
@@ -343,7 +231,6 @@
     <span>Agendar una llamada</span>
   </button>
 </aside>
-
 
   <!-- HEADER -->
   <header class="header" id="logoBtn">
@@ -363,53 +250,82 @@
 
 </nav>
 
- <!-- SLIDER PRINCIPAL -->
-<div class="slides">
-<div class="slide">
-<img src="Assets/img/Portal barracas negocio..jpg" alt="Slide 1">
-<div class="caption">
-<!--<h1>Bienvenido</h1>
-<p>Este es nuestro sitio</p>
-<a href="#">Conócenos</a>-->
-</div>
-</div>
 
-</div>
-</div>
-</div>
+<section class="productos-grid">
+  <h2 class="titulo-seccion">Nuestros Productos</h2>
 
-<span></span>
-<span></span>
-</div>
-</div>
+<h3 class="titulo-seccion">Electro hogar</h3> 
 
-<img class="Logo" src="Assets/img/LOGO JB.jpg" alt="Logo Animado JB">
+  <div class="grid-container">
 
-<div id="mapa-sede-1">
-  <h3>Dirección Sede Barracas</h3>
-  <iframe
-    src="https://www.google.com/maps/d/u/0/embed?mid=1oeP4CLuzdOUi_1BKfK4YPZYyGYyHBes&ehbc=2E312F&noprof=1"
-    width="600"
-    height="450"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+  
+
+    <!-- === Producto 1 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Samsung rt38.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung - Modelo RT38</p>
+        <p class="descripcion">Capacidad 380L, eficiencia A+, congelador superior.</p>
+        <p class="precio">$ 1.170.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt-38-380-lts-no-frost-inverter/55">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 2 === -->
+    <div class="producto-card">
+      <img src="Assets/img/Samsung rt38 inverter.jfif" alt="Heladera No Frost Samsung">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung RT38 Inverter</p>
+        <p class="descripcion">380 LTS NO FROST, INVERTER.</p>
+        <p class="precio">$ 1.169.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt-38-380-lts-no-frost-inverter/52">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 3 === -->
+    <div class="producto-card">
+      <img src="Assets/img/samsung blanca outlet heladera.jfif" alt="Heladera No Frost Samsung RT32">
+      <div class="producto-info">
+        <h3>Heladera No Frost</h3>
+        <p class="marca">Samsung RT32</p>
+        <p class="descripcion">NO FROST INVERTER OUTLET</p>
+        <p class="precio">$ 740.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/heladera-samsung-rt32-no-frost-inverter-outlet/405">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- === Producto 4 === -->
+    <div class="producto-card">
+      <img src="Assets/img/LAVASECARROPA LG 9.5 KG INVERTER ACERO.jfif" alt="Lavasecarropas LG">
+      <div class="producto-info">
+        <h3>Lavasecarropas Automático</h3>
+        <p class="marca">LG - Modelo TurboWash</p>
+        <p class="descripcion">9.5 KG, INVERTER ACERO, 1200 RPM, panel digital.</p>
+        <p class="precio">$ 1.340.000,00</p>
+        <div class="botones-producto">
+          <a class="btn-ver" href="https://nextar.shop/JBOUTLET/product/lavasecarropa-lg-95-kg-inverter-acero/479">Ver más</a>
+          <button class="btn-carrito"><i class="fa-solid fa-cart-shopping"></i> Agregar</button>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+</section>
 
 
-
-<!-- Elfsight Google Reviews | Untitled Google Reviews -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-a0528c75-2757-48ef-a350-3307e0527958" data-elfsight-app-lazy></div>
-
-<div class="whatsapp-container">
-  <a href="https://wa.me/5491131433541" target="_blank">
-<img src="Assets/icons/Logo_whatsapp3.png" class="whatsapp" alt="WhatsApp" width="80px" height="80px"></a>
-</div>
-
-  <!-- FOOTER -->
+<!-- FOOTER -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-logo">
@@ -429,8 +345,9 @@
           </ul>
         </div>
 
-       <div>
-  <h4>Newsletter</h4>
+        <div>
+  
+<h4>Newsletter</h4>
   <p>Suscribite para recibir ofertas especiales</p>
   <form action="https://formspree.io/f/tu_form_id" method="POST">
     <input type="email" name="email" placeholder="E-mail" required>
@@ -450,7 +367,7 @@
      <div class="social-icons">
       <span>Sígueme:</span>
       
-      <a href="https://www.facebook.com/profile.php?id=61554406261202&locale=cy_GB" target="_blank" rel="noopener noreferrer">
+       <a href="https://www.facebook.com/profile.php?id=61554406261202&locale=cy_GB" target="_blank" rel="noopener noreferrer">
         <img src="Assets/icons/facebook.svg" alt="Facebook" class="social-icon">
       </a>
       
