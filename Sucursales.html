@@ -288,15 +288,14 @@
           
         </ul>
       </li>
-
-      <li class="categoria">
+<li class="categoria">
         <a href="Productos.html"><i class="fa-solid fa-blender"></i> Electro Hogar <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
           <li><a href="Electrohogar.html">Heladeras</a></li>
-          <li><a href="Electrohogar.html">Lavarropas</a></li>
-          <li><a href="Electrohogar.html">Cocinas</a></li>
-          <li><a href="Electrohogar.html">Microondas</a></li>
-          <li><a href="Electrohogar.html">Freidoras</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/lavarropas" target="_blank">Lavarropas</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/cocinas" target="_blank" > Cocinas</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/microondas" target="_blank">Microondas</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/freidora-de-aire" target="_blank">Freidoras</a></li>
        
         </ul>
       </li>
@@ -304,13 +303,12 @@
       <li class="categoria">
         <a href="Productos.html"><i class="fa-solid fa-fan"></i> Climatización <i class="fa-solid fa-chevron-down arrow"></i></a>
         <ul class="subcategorias">
-          <li><a href="Climatizacion.html">Aires acondicionados</a></li>
-          <li><a href="Climatizacion.html">Ventiladores</a></li>
-          <li><a href="Climatizacion.html">Calefactores</a></li>
-          <li><a href="Climatizacion.html">Termotanques</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/aire-acondicionado" target="_blank" >Aires acondicionados</a></li>
+          <li><a href="https://nextar.shop/JBOUTLET/category/ventilador/primera"target="_blank" >Ventiladores</a></li>
+      <!--<li><a href="Climatizacion.html">Calefactores</a></li>-->
+          <li><a href="https://nextar.shop/JBOUTLET/category/termotanques"target="_blank" >Termotanques</a></li>
         </ul>
       </li>
-
 
       
   <!-- ENLACES FIJOS -->
@@ -514,6 +512,32 @@
       parent.classList.toggle('open');
     });
   });
+
+// === Compatibilidad con pantallas táctiles (móviles) ===
+let sidebarVisible = false;
+
+// Mostrar u ocultar el sidebar con toque en móviles
+logoBtn.addEventListener("touchstart", () => {
+  sidebarVisible = !sidebarVisible;
+  if (sidebarVisible) {
+    showSidebar();
+  } else {
+    hideSidebar();
+  }
+});
+
+// También permitir tocar fuera del sidebar para cerrarlo
+document.addEventListener("touchstart", (e) => {
+  if (
+    sidebarVisible &&
+    !sidebar.contains(e.target) &&
+    !logoBtn.contains(e.target) &&
+    !arrow.contains(e.target)
+  ) {
+    hideSidebar();
+    sidebarVisible = false;
+  }
+});
 
 
 /* === GALERÍA INTERACTIVA === */
